@@ -1,6 +1,6 @@
 const http = require('http');
 
-const hostname = 'localhost';
+const hostname = '51.210.149.60'; // Remplacez cette valeur par l'adresse IP de votre serveur
 const port = 8080;
 
 const server = http.createServer((req, res) => {
