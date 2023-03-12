@@ -4,7 +4,7 @@
   "description": "salut",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tailwindcss -i ./public/css/style.css -o ./public/css/tailwind.css --watch"
   },
   "repository": {
     "type": "git",
