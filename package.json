@@ -1,0 +1,19 @@
+{
+  "name": "musictest",
+  "version": "1.0.0",
+  "description": "salut",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ednam34/musicTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ednam34/musicTest/issues"
+  },
+  "homepage": "https://github.com/ednam34/musicTest#readme"
+}
