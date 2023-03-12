@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clea je t'aime</title>
+  <meta charset="UTF-8">
+  <style>
+    /* Style pour le texte centré */
+    #message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="message"></div>
+  <script>
+    // Tableau contenant les couleurs à utiliser
+    const colors = ['#FF5733', '#C70039', '#900C3F', '#581845', '#900DFF', '#581845'];
+
+    // Fonction pour changer la couleur du texte
+    function changeColor() {
+      const randomIndex = Math.floor(Math.random() * colors.length);
+      const color = colors[randomIndex];
+      document.getElementById('message').style.color = color;
+    }
+
+    // Change la couleur toutes les secondes
+    setInterval(changeColor, 1000);
+
+    // Affiche le message
+    document.getElementById('message').textContent = "Clea je t'aime";
+  </script>
+</body>
+</html>
