@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ednam34/musicTest/issues"
   },
-  "homepage": "https://github.com/ednam34/musicTest#readme"
+  "homepage": "https://github.com/ednam34/musicTest#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

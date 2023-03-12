@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>Music Test</h1>
+    <p>Click the button to play the sound.</p>
+    <button onclick="playSound()">Play</button>
+    <script>
+        function playSound() {
+            var audio = new Audio('music.mp3');
+            audio.play();
+        }
+    </script>
+</html>
