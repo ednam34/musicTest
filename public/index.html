@@ -12,12 +12,29 @@
       transform: translate(-50%, -50%);
       font-size: 4rem;
     }
+
+    /* Style pour le boutton jouer de la musique */
+    #playButton {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      background-color: #FF5733;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+
   </style>
 </head>
 <body>
   <div id="message"></div>
   <!-- boutton jouer de la musique-->
-    <button onclick="play()">Play</button>
+    <button id="playButton" onclick="play()">Play</button>
   <script>
     // Tableau contenant les couleurs à utiliser
     const colors = ['#FF5733', '#C70039', '#900C3F', '#581845', '#900DFF', '#581845'];
