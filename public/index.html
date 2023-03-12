@@ -16,6 +16,8 @@
 </head>
 <body>
   <div id="message"></div>
+  <!-- boutton jouer de la musique-->
+    <button onclick="play()">Play</button>
   <script>
     // Tableau contenant les couleurs à utiliser
     const colors = ['#FF5733', '#C70039', '#900C3F', '#581845', '#900DFF', '#581845'];
@@ -32,6 +34,12 @@
 
     // Affiche le message
     document.getElementById('message').textContent = "Clea je t'aime";
+
+    // Fonction pour jouer de la musique
+    function play() {
+      var audio = new Audio('music.mp3');
+      audio.play();
+    }
   </script>
 </body>
 </html>
