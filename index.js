@@ -3,13 +3,13 @@ const path = require('path');
 const http = require('http');
 const app = express();
 const port = 80;
-const hostname = '51.210.149.60';
+//const hostname = '51.210.149.60';
 
 // Définit le dossier contenant les fichiers statiques
 
 
 // Lance le serveur
-app.listen(port,hostname, () => {
+app.listen(port, () => {
   console.log(`Le serveur fonctionne sur le port ${port}`);
 });
 
