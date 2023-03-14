@@ -80,7 +80,8 @@ function getAlbumCovers(artistName) {
             const coverUrl = `https://coverartarchive.org/release/${album.id}/front-250`;
             return {
               title: albumTitle,
-              coverUrl: coverUrl
+              coverUrl: coverUrl,
+              artName : artistName
             };
           });
         const albumCoversUnique = albumCovers.filter((album, index, self) =>
@@ -115,7 +116,8 @@ app.post('/cover', async (req, res) => {
   const allcover = albumCovers.map(album => {
     return {
       coverUrl: album.coverUrl,
-      title: album.title
+      title: album.title,
+      name : album.artName
     };
   });
 
