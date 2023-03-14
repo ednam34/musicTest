@@ -49,7 +49,10 @@ function getAlbumCovers(artistName) {
         return;
       }
       console.log(JSON.parse(body).artists[0]);
-
+      if (JSON.parse(body).artists[0] === undefined) {
+        reject(`Error: ${error || body}`);
+        return;
+      }
       const artistData = JSON.parse(body).artists[0];
       //console.log(artistData);
       const artistId = artistData.id;
