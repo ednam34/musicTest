@@ -2,12 +2,13 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const app = express();
+const bodyParser = require('body-parser');
 const port = 80;
 //const hostname = '51.210.149.60';
 
 // Définit le dossier contenant les fichiers statiques
 
-
+app.use(bodyParser.urlencoded({ extended: true }));
 // Lance le serveur
 app.listen(port, () => {
   console.log(`Le serveur fonctionne sur le port ${port}`);
@@ -24,3 +25,100 @@ app.get('/', (req, res) => {
 app.get('/alban', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'alban.html'));
 });
+
+const request = require('request');
+const USER_AGENT = 'MyApplication/1.0.0 (contact@myapp.com)';
+
+
+function getAlbumCovers(artistName) {
+  return new Promise((resolve, reject) => {
+    const apiUrl = `https://musicbrainz.org/ws/2/artist/?query=artist:${artistName}&fmt=json`;
+    console.log(apiUrl);
+    request({
+      url: apiUrl,
+      headers: {
+        'User-Agent': USER_AGENT
+      }
+    }, (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        reject(`Error: ${error || body}`);
+        return;
+      }
+      console.log(JSON.parse(body).artists[0]);
+
+      const artistData = JSON.parse(body).artists[0];
+      //console.log(artistData);
+      const artistId = artistData.id;
+      const artistName = artistData.name;
+      console.log(artistId+ " "+ artistName);
+
+      const albumsUrl = `https://musicbrainz.org/ws/2/release/?query=arid:${artistId}&inc=recordings&fmt=json`;
+      //console.log(albumsUrl);
+      request({
+        url: albumsUrl,
+        headers: {
+          'User-Agent': USER_AGENT
+        }
+      }, (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          reject(`Error: ${error || body}`);
+          return;
+        }
+
+        const albumData = JSON.parse(body).releases;
+
+        const albumCovers = albumData
+          .map(album => {
+            const albumTitle = album.title;
+            const coverUrl = `https://coverartarchive.org/release/${album.id}/front-250`;
+            return {
+              title: albumTitle,
+              coverUrl: coverUrl
+            };
+          });
+          //console.log(`Album covers for ${artistName}:`);
+          //albumCovers.forEach(album => console.log(`${album.title}: ${album.coverUrl}`));
+          resolve(albumCovers);
+      });
+
+    }); 
+  });
+}
+
+
+
+//getAlbumCovers('jazzy-bazz');
+
+
+
+app.post('/cover', async (req, res) => {
+  // Extraire les données du corps de la requête
+  const data = req.body.artistName;
+
+  // Faire quelque chose avec les données
+  console.log(data);
+  const albumCovers = await getAlbumCovers(data);
+
+  const allcover = albumCovers.map(album => {
+    return `<img src="${album.coverUrl}" alt="">
+    <p>${album.title}</p>`;
+  }).join('');
+
+  // Envoyer une réponse
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Message de bienvenue</title>
+      </head>
+      <body>
+        <h1>Voici les covers de ${data}</h1>
+        ${allcover}
+      </body>
+    </html>
+  `;
+  res.send(html);
+});
+
+
