@@ -120,8 +120,5 @@ app.post('/cover', async (req, res) => {
   res.render('cover', { artistName: data, albumCovers: allcover });
 });
 
-app.listen(3000, () => {
-  console.log('Serveur démarré sur le port 3000');
-});
 
 
