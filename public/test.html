@@ -45,34 +45,33 @@
 
 <body>
     
-    <div class="flex justify-center">
-        <div
-          class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700">
-          <a href="#!">
-            <img
-              class="rounded-t-lg"
-              src="https://coverartarchive.org/release/498afb18-1874-4b7a-b06e-d7b6aacdf920/front-250"
-              alt="" />
-          </a>
-          <div class="p-6">
-            <h5
-              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              Card title
-            </h5>
-            <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <button
-              type="button"
-              class="inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
-              data-te-ripple-init
-              data-te-ripple-color="light">
-              Button
-            </button>
-          </div>
+    <div class="flex flex-col justify-center items-center h-[100vh]">
+        <div class="!z-5 relative flex flex-col rounded-[20px] max-w-[300px] bg-white bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-4 3xl:p-![18px] bg-white undefined">
+            <div class="h-full w-full">
+                <div class="relative w-full">
+                    <img src="img/album.jpeg" class="mb-3 h-full w-full rounded-xl 3xl:h-full 3xl:w-full" alt="">
+                    <button class="absolute top-3 right-3 flex items-center justify-center rounded-full bg-white p-2 text-brand-500 hover:cursor-pointer">
+                        <div class="flex h-full w-full items-center justify-center rounded-full text-xl hover:bg-gray-50">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"></path></svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="mb-3 flex items-center justify-between px-1 md:items-start">
+                    <div class="mb-2">
+                        <p class="text-lg font-bold text-navy-700"> Abstract Colors </p>
+                        <p class="mt-1 text-sm font-medium text-gray-600 md:mt-2">By Esthera Jackson </p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between md:items-center lg:justify-between ">
+                    <div class="flex">
+                        <p class="!mb-0 text-sm font-bold text-brand-500">Current Bid: 0.91 <span>ETH</span></p>
+                    </div>
+                    <button href="" class="linear rounded-[20px] bg-brand-900 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-800 active:bg-brand-700">Place Bid</button>
+                </div>
+            </div>
         </div>
-      </div>
+        <p class="font-normal text-navy-700 mt-20 mx-auto w-max">Notifications Card component from <a href="https://horizon-ui.com?ref=tailwindcomponents.com" target="_blank" class="text-brand-500 font-bold">Horizon UI Tailwind React</a></p>  
+    </div>
 
 </body>
 </html>
