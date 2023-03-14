@@ -121,6 +121,8 @@ app.post('/cover', async (req, res) => {
     };
   });
 
+  console.log(allcover);
+
   // Rendre la vue EJS
   res.render('cover', { artistName: data, albumCovers: allcover });
 });
