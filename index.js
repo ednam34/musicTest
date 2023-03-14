@@ -77,7 +77,7 @@ function getAlbumCovers(artistName) {
         const albumCovers = albumData
           .map(album => {
             const albumTitle = album.title;
-            const coverUrl = `https://coverartarchive.org/release/${album.id}/front-250`;
+            const coverUrl = `https://coverartarchive.org/release/${album.id}/front-500`;
             return {
               title: albumTitle,
               coverUrl: coverUrl,
