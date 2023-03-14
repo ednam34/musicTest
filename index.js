@@ -7,6 +7,7 @@ const port = 80;
 const ejs = require('ejs');
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'public'))
 //const hostname = '51.210.149.60';
 
 // Définit le dossier contenant les fichiers statiques
