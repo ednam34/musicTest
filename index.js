@@ -4,6 +4,9 @@ const http = require('http');
 const app = express();
 const bodyParser = require('body-parser');
 const port = 80;
+const ejs = require('ejs');
+
+app.set('view engine', 'ejs');
 //const hostname = '51.210.149.60';
 
 // Définit le dossier contenant les fichiers statiques
@@ -106,25 +109,18 @@ app.post('/cover', async (req, res) => {
   const albumCovers = await getAlbumCovers(data);
 
   const allcover = albumCovers.map(album => {
-    return `<img src="${album.coverUrl}" alt="">
-    <p>${album.title}</p>`;
-  }).join('');
+    return {
+      coverUrl: album.coverUrl,
+      title: album.title
+    };
+  });
 
-  // Envoyer une réponse
-  const html = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8">
-        <title>Message de bienvenue</title>
-      </head>
-      <body>
-        <h1>Voici les covers de ${data}</h1>
-        ${allcover}
-      </body>
-    </html>
-  `;
-  res.send(html);
+  // Rendre la vue EJS
+  res.render('cover', { artistName: data, albumCovers: allcover });
+});
+
+app.listen(3000, () => {
+  console.log('Serveur démarré sur le port 3000');
 });
 
 

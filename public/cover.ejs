@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Message de bienvenue</title>
+  </head>
+  <body>
+    <h1>Voici les covers de <%= artistName %></h1>
+    <% albumCovers.forEach(album => { %>
+      <img src="<%= album.coverUrl %>" alt="">
+      <p><%= album.title %></p>
+    <% }) %>
+  </body>
+</html>
