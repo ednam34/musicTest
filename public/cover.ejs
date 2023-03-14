@@ -43,7 +43,7 @@
 
 </head>
 <body class="bg-gray-900">
-    <h1 class="text-white text-center text-4xl font-bold mb-8">Voici les covers de</h1>
+    <h1 class="text-white text-center text-xl font-bold mb-8">Voici les covers de</h1>
 
     <div class="flex flex-wrap justify-center">
         <% albumCovers.forEach(album => { %>
@@ -57,9 +57,9 @@
                     </button>
                 </div>
                 <div class="mt-3 w-full">
-                    <p class="text-lg font-bold text-navy-700 truncate w-full"><%= album.title %></p>
-                    <p class="mt-1 text-sm font-medium text-gray-600 md:mt-2">By Esthera Jackson </p>
-                    <button href="" class="linear rounded-md bg-brand-900 px-4 py-2 text-base font-medium text-white mt-3 transition duration-200 hover:bg-brand-800 active:bg-brand-700">Place Bid</button>
+                    <p class="text-lg font-bold text-white truncate w-full"><%= album.title %></p>
+                    <p class="mt-1 text-sm font-medium text-gray-600 md:mt-2">By Laylow </p>
+                    <button href="" class="linear rounded-md bg-brand-900 px-4 py-2 text-base font-medium text-white mt-3 transition duration-200 hover:bg-brand-800 active:bg-brand-700"></button>
                 </div>
             </div>
         <% }) %>
