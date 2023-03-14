@@ -76,9 +76,15 @@ function getAlbumCovers(artistName) {
               coverUrl: coverUrl
             };
           });
+        const albumCoversUnique = albumCovers.filter((album, index, self) =>
+          index === self.findIndex((a) => (
+          a.title === album.title
+          ))
+        );
+
           //console.log(`Album covers for ${artistName}:`);
           //albumCovers.forEach(album => console.log(`${album.title}: ${album.coverUrl}`));
-          resolve(albumCovers);
+          resolve(albumCoversUnique);
       });
 
     }); 
