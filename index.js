@@ -123,10 +123,11 @@ async function getAlbums(artistName) {
     const albumData = albums.body.items.map(album => {
       const albumTitle = album.name;
       const coverUrl = album.images[0].url;
+      const artistN = album.artists[0].name;
       return {
         title: albumTitle,
         coverUrl: coverUrl,
-        artName: artistName
+        artName: artistN
       };
     });
 
