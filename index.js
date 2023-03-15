@@ -78,10 +78,11 @@ function getAlbumCovers(artistName) {
           .map(album => {
             const albumTitle = album.title;
             const coverUrl = `https://coverartarchive.org/release/${album.id}/front-500`;
+            const artistN = album['artist-credit'][0].name;
             return {
               title: albumTitle,
               coverUrl: coverUrl,
-              artName : artistName
+              artName : artistN
             };
           });
         const albumCoversUnique = albumCovers.filter((album, index, self) =>
