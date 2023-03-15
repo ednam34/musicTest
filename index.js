@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 80;
+const port = 8080;
 const ejs = require('ejs');
 
 app.set('view engine', 'ejs');
@@ -101,6 +101,42 @@ function getAlbumCovers(artistName) {
 
 
 
+const SpotifyWebApi = require('spotify-web-api-node');
+const spotifyApi = new SpotifyWebApi({
+  clientId: '49ad7ba70b8e4be78851cdcd044e678e',
+  clientSecret: '4440ac6aefb5448b9a21dac1360915c8'
+});
+
+async function getAlbums(artistName) {
+  try {
+    const data = await spotifyApi.clientCredentialsGrant();
+    console.log('Le jeton d\'accès a été récupéré avec succès !');
+
+    // Sauvegardez le jeton d'accès dans l'instance de l'API Spotify
+    spotifyApi.setAccessToken(data.body['access_token']);
+
+    const results = await spotifyApi.searchArtists(artistName);
+    const artistId = results.body.artists.items[0].id;
+    const albums = await spotifyApi.getArtistAlbums(artistId);
+
+    const albumData = albums.body.items.map(album => {
+      const albumTitle = album.name;
+      const coverUrl = album.images[0].url;
+      return {
+        title: albumTitle,
+        coverUrl: coverUrl,
+        artName: artistName
+      };
+    });
+
+    return albumData;
+  } catch (error) {
+    console.log('Une erreur s\'est produite :', error);
+    return [];
+  }
+}
+
+
 //getAlbumCovers('jazzy-bazz');
 
 
@@ -111,15 +147,13 @@ app.post('/cover', async (req, res) => {
 
   // Faire quelque chose avec les données
   console.log(data);
-  const albumCovers = await getAlbumCovers(data);
+  const albumCovers = await getAlbums(data);
 
-  const allcover = albumCovers.map(album => {
-    return {
-      coverUrl: album.coverUrl,
-      title: album.title,
-      name : album.artName
-    };
-  });
+  const allcover = albumCovers.filter((album, index, self) =>
+  index === self.findIndex((a) => (
+  a.title === album.title
+  ))
+);
 
   console.log(allcover);
 
