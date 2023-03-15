@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 8080;
+const port = 80;
 const ejs = require('ejs');
 
 app.set('view engine', 'ejs');
